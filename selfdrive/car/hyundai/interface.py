@@ -245,6 +245,8 @@ class CarInterface(CarInterfaceBase):
     elif candidate == CAR.MOHAVE:
       ret.mass = 2285. + STD_CARGO_KG
       ret.wheelbase = 2.895
+      ret.centerToFront = ret.wheelbase * 0.4
+      
       ret.lateralTuning.init('indi')
       ret.lateralTuning.indi.innerLoopGainBP = [0.]
       ret.lateralTuning.indi.innerLoopGainV = [3.5] # third tune. Highest value that still gives smooth control. Effects turning into curves.
