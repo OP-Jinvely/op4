@@ -148,6 +148,11 @@ class CarInterfaceBase():
        (cs_out.brakePressed and (not self.CS.out.brakePressed or not cs_out.standstill)):
       events.add(EventName.pedalPressed)
 
+    # 자동인게이지 장푸 버젼 engage when vEgo above 9.375(15kmh)
+    if cs_out.cruiseState.enabled:
+      if cs_out.gearShifter == GearShifter.drive and cs_out.vEgo > 4.166667:  #9.375:
+        events.add(EventName.pcmEnable)
+
     # we engage when pcm is active (rising edge)
     if pcm_enable:
       if cs_out.cruiseState.enabled and not self.CS.out.cruiseState.enabled:
