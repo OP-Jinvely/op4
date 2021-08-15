@@ -47,24 +47,33 @@ class CarInterface(CarInterfaceBase):
     ret.maxSteeringAngleDeg = 90.
 
     # lateral
-    ret.lateralTuning.init('lqr')
+#    ret.lateralTuning.init('lqr')
 
-    ret.lateralTuning.lqr.scale = 1700.
-    ret.lateralTuning.lqr.ki = 0.01
-    ret.lateralTuning.lqr.dcGain = 0.0028
+#    ret.lateralTuning.lqr.scale = 1700.
+#    ret.lateralTuning.lqr.ki = 0.01
+#    ret.lateralTuning.lqr.dcGain = 0.0028
 
-    ret.lateralTuning.lqr.a = [0., 1., -0.22619643, 1.21822268]
-    ret.lateralTuning.lqr.b = [-1.92006585e-04, 3.95603032e-05]
-    ret.lateralTuning.lqr.c = [1., 0.]
-    ret.lateralTuning.lqr.k = [-110., 451.]
-    ret.lateralTuning.lqr.l = [0.33, 0.318]
-
-    ret.steerRatio = 16.5
-    ret.steerActuatorDelay = 0.1
-    ret.steerLimitTimer = 2.5
-    ret.steerRateCost = 0.4
+#    ret.lateralTuning.lqr.a = [0., 1., -0.22619643, 1.21822268]
+#    ret.lateralTuning.lqr.b = [-1.92006585e-04, 3.95603032e-05]
+#    ret.lateralTuning.lqr.c = [1., 0.]
+#    ret.lateralTuning.lqr.k = [-110., 451.]
+#    ret.lateralTuning.lqr.l = [0.33, 0.318]
+    ret.lateralTuning.init('indi')
+    ret.lateralTuning.indi.innerLoopGainBP = [0.]
+    ret.lateralTuning.indi.innerLoopGainV = [3.5] # third tune. Highest value that still gives smooth control. Effects turning into curves.
+    ret.lateralTuning.indi.outerLoopGainBP = [0.]
+    ret.lateralTuning.indi.outerLoopGainV = [2.0] # forth tune. Highest value that still gives smooth control. Effects lane centering.
+    ret.lateralTuning.indi.timeConstantBP = [0.]
+    ret.lateralTuning.indi.timeConstantV = [2.0] # second tune. Lowest value with smooth actuation. Avoid the noise of actuator gears thrashing.
+    ret.lateralTuning.indi.actuatorEffectivenessBP = [0.]
+    ret.lateralTuning.indi.actuatorEffectivenessV = [1.9] # first tune. Lowest value without oversteering. May vary with speed.
+ 
+    ret.steerRatio = 17.5
+    ret.steerActuatorDelay = 0.07
+    ret.steerLimitTimer = 3.0
+    ret.steerRateCost = 0.35
     ret.steerMaxBP = [0.]
-    ret.steerMaxV = [1.5]
+    ret.steerMaxV = [2.0]
 
     # longitudinal
     ret.longitudinalTuning.kpBP = [0., 10.*CV.KPH_TO_MS, 20.*CV.KPH_TO_MS, 40.*CV.KPH_TO_MS, 70.*CV.KPH_TO_MS, 100.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
