@@ -255,7 +255,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.indi.timeConstantBP = [0.]
       ret.lateralTuning.indi.timeConstantV = [2.0] # second tune. Lowest value with smooth actuation. Avoid the noise of actuator gears thrashing.
       ret.lateralTuning.indi.actuatorEffectivenessBP = [0.]
-      ret.lateralTuning.indi.actuatorEffectivenessV = [1.9] # first tune. Lowest value without oversteering. May vary with speed.
+      ret.lateralTuning.indi.actuatorEffectivenessV = [1.95] # first tune. Lowest value without oversteering. May vary with speed.
 
     ret.radarTimeStep = 0.05
 
