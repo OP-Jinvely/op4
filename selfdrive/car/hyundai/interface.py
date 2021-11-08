@@ -248,15 +248,24 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.4
       
       ret.lateralTuning.init('indi')
+#      ret.lateralTuning.indi.innerLoopGainBP = [0.]
+#      ret.lateralTuning.indi.innerLoopGainV = [3.8] # third tune. Highest value that still gives smooth control. Effects turning into curves.
+#      ret.lateralTuning.indi.outerLoopGainBP = [0.]
+#      ret.lateralTuning.indi.outerLoopGainV = [2.3] # forth tune. Highest value that still gives smooth control. Effects lane centering.
+#      ret.lateralTuning.indi.timeConstantBP = [0., 30.*CV.KPH_TO_MS, 60.*CV.KPH_TO_MS]
+#      ret.lateralTuning.indi.timeConstantV = [1.5, 2.5, 3.0] # second tune. Lowest value with smooth actuation. Avoid the noise of actuator gears thrashing.
+#      ret.lateralTuning.indi.actuatorEffectivenessBP = [0.]
+#      ret.lateralTuning.indi.actuatorEffectivenessV = [1.95] # first tune. Lowest value without oversteering. May vary with speed.
+      
       ret.lateralTuning.indi.innerLoopGainBP = [0.]
       ret.lateralTuning.indi.innerLoopGainV = [3.8] # third tune. Highest value that still gives smooth control. Effects turning into curves.
       ret.lateralTuning.indi.outerLoopGainBP = [0.]
-      ret.lateralTuning.indi.outerLoopGainV = [2.3] # forth tune. Highest value that still gives smooth control. Effects lane centering.
-      ret.lateralTuning.indi.timeConstantBP = [0., 30.*CV.KPH_TO_MS, 60.*CV.KPH_TO_MS]
-      ret.lateralTuning.indi.timeConstantV = [1.5, 2.5, 3.0] # second tune. Lowest value with smooth actuation. Avoid the noise of actuator gears thrashing.
+      ret.lateralTuning.indi.outerLoopGainV = [3.5] # forth tune. Highest value that still gives smooth control. Effects lane centering.
+      ret.lateralTuning.indi.timeConstantBP = [0.]
+      ret.lateralTuning.indi.timeConstantV = [5.0] # second tune. Lowest value with smooth actuation. Avoid the noise of actuator gears thrashing.
       ret.lateralTuning.indi.actuatorEffectivenessBP = [0.]
       ret.lateralTuning.indi.actuatorEffectivenessV = [1.95] # first tune. Lowest value without oversteering. May vary with speed.
-
+ 
     ret.radarTimeStep = 0.05
 
 
